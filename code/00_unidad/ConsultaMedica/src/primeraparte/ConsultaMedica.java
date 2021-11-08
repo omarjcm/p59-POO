@@ -99,5 +99,16 @@ public class ConsultaMedica {
                 break;
             }
         }
+        
+        /*
+        Cantidad de Consultas por especialidad
+        */
+        System.out.println("Especialidades: ");
+        System.out.println("A. Medicina General: " + contA);
+        System.out.println("B. Cardiologia: " + contB);
+        System.out.println("C. Traumatologia: " + contC);
+        System.out.println("D. Dermatologia: " + contD);
+        System.out.println("E. Pediatria: " + contE);
+        
     }
 }
