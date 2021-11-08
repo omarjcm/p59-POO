@@ -40,7 +40,8 @@ public class ConsultaMedica {
             }
             
             System.out.print("Año de nacimiento del Paciente: ");
-            int anio = consola.nextInt();
+            String anio_nacimiento = consola.nextLine();
+            int anio = Integer.parseInt(anio_nacimiento);
             if ((ANIO_ACTUAL - anio) >= 65) {
                 esTerceraEdad = true;
             }
@@ -53,7 +54,7 @@ public class ConsultaMedica {
                 System.out.println("C. Traumatologia");
                 System.out.println("D. Dermatologia");
                 System.out.println("E. Pediatria");
-                System.out.println("Seleccionar la especialidad: ");
+                System.out.print("Seleccionar la especialidad: ");
                 especialidad = consola.nextLine();
             } while(especialidad.compareTo("A") != 0 && 
                     especialidad.compareTo("B") != 0 &&
