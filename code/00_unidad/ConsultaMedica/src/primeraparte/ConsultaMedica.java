@@ -88,8 +88,6 @@ public class ConsultaMedica {
                         contDescE++;
                     break;
             }
-                        
-                        
             
             esTerceraEdad = false;
             System.out.println("Desea salir? [S/N]: ");
@@ -103,12 +101,39 @@ public class ConsultaMedica {
         /*
         Cantidad de Consultas por especialidad
         */
-        System.out.println("Especialidades: ");
+        System.out.println("CANTIDAD DE CONSULTAS POR ESPECIALIDAD: ");
         System.out.println("A. Medicina General: " + contA);
         System.out.println("B. Cardiologia: " + contB);
         System.out.println("C. Traumatologia: " + contC);
         System.out.println("D. Dermatologia: " + contD);
         System.out.println("E. Pediatria: " + contE);
         
+        /*
+        Total de descuentos
+        */
+        System.out.println("TOTAL DE DESCUENTOS POR ESPECIALIDAD: ");
+        System.out.println("A. Medicina General: " + contDescA*valorA*0.1);
+        System.out.println("B. Cardiologia: " + contDescB*valorB*0.1);
+        System.out.println("C. Traumatologia: " + contDescC*valorC*0.1);
+        System.out.println("D. Dermatologia: " + contDescD*valorD*0.1);
+        System.out.println("E. Pediatria: " + + contDescE*valorE*0.1);
+        
+        /*
+        Totales por especialidad
+        */
+        System.out.println("TOTALES POR ESPECIALIDAD: ");
+        System.out.println("A. Medicina General: ");
+        System.out.println("B. Cardiologia: ");
+        System.out.println("C. Traumatologia: ");
+        System.out.println("D. Dermatologia: ");
+        System.out.println("E. Pediatria: ");
+                
+        /*
+        Total de consultas
+        */
+        
+        /*
+        Total de pacientes y total de pacientes por sexo
+        */
     }
 }
