@@ -53,8 +53,8 @@ public class ConsultaMedica {
                 System.out.println("C. Traumatologia");
                 System.out.println("D. Dermatologia");
                 System.out.println("E. Pediatria");
-                System.out.print("Seleccionar la especialidad: ");
-                especialidad = consola.nextLine();                
+                System.out.println("Seleccionar la especialidad: ");
+                especialidad = consola.nextLine();
             } while(especialidad.compareTo("A") != 0 && 
                     especialidad.compareTo("B") != 0 &&
                     especialidad.compareTo("C") != 0 &&
@@ -112,28 +112,41 @@ public class ConsultaMedica {
         Total de descuentos
         */
         System.out.println("TOTAL DE DESCUENTOS POR ESPECIALIDAD: ");
-        System.out.println("A. Medicina General: " + contDescA*valorA*0.1);
-        System.out.println("B. Cardiologia: " + contDescB*valorB*0.1);
-        System.out.println("C. Traumatologia: " + contDescC*valorC*0.1);
-        System.out.println("D. Dermatologia: " + contDescD*valorD*0.1);
-        System.out.println("E. Pediatria: " + + contDescE*valorE*0.1);
+        double descA = contDescA*valorA*0.1;
+        System.out.println("A. Medicina General: " + descA);
+        double descB = contDescB*valorB*0.1;
+        System.out.println("B. Cardiologia: " + descB);
+        double descC = contDescC*valorC*0.1;
+        System.out.println("C. Traumatologia: " + descC);
+        double descD = contDescD*valorD*0.1;
+        System.out.println("D. Dermatologia: " + descD);
+        double descE = contDescE*valorE*0.1;
+        System.out.println("E. Pediatria: " + descE);
         
         /*
         Totales por especialidad
         */
         System.out.println("TOTALES POR ESPECIALIDAD: ");
-        System.out.println("A. Medicina General: ");
-        System.out.println("B. Cardiologia: ");
-        System.out.println("C. Traumatologia: ");
-        System.out.println("D. Dermatologia: ");
-        System.out.println("E. Pediatria: ");
-                
+        double totalA = (contA * valorA) - descA;
+        System.out.println("A. Medicina General: " + totalA);
+        double totalB = (contB * valorB) - descB;
+        System.out.println("B. Cardiologia: " + totalB);
+        double totalC = (contC * valorC) - descC;
+        System.out.println("C. Traumatologia: " + totalC);
+        double totalD = (contD * valorD) - descD;
+        System.out.println("D. Dermatologia: " + totalD);
+        double totalE = (contE * valorE) - descE;
+        System.out.println("E. Pediatria: " + totalE);
+        
         /*
         Total de consultas
         */
-        
+        System.out.println("TOTAL POR LAS CONSULTAS: " + (totalA + totalB + totalC + totalD + totalE));
         /*
         Total de pacientes y total de pacientes por sexo
         */
+        System.out.println("Total de Pacientes: " + (contMasc + contFem));
+        System.out.println("Total de Pacientes Masculinos: " + (contMasc));
+        System.out.println("Total de Pacientes Femeninos: " + (contFem));
     }
 }
