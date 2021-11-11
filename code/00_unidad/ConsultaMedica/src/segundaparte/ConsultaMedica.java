@@ -27,11 +27,7 @@ public class ConsultaMedica {
             String paciente = consola.nextLine();
             
             /* Ingreso del sexo y validacion */
-            String sexo = "";
-            do {
-                System.out.print("Sexo del Paciente [M/F]: ");
-                sexo = consola.nextLine();
-            } while(sexo.compareTo("M") != 0 && sexo.compareTo("F") != 0);
+            String sexo = validarSexo(consola);
             if (sexo.compareTo("M") == 0) {
                 contMasc++;
             } else if (sexo.compareTo("F") == 0) {
@@ -39,28 +35,12 @@ public class ConsultaMedica {
             }
             
             System.out.print("Año de nacimiento del Paciente: ");
-            String anio_nacimiento = consola.nextLine();
-            int anio = Integer.parseInt(anio_nacimiento);
+            int anio = validarAnioNacimiento(consola);
             if ((ANIO_ACTUAL - anio) >= 65) {
                 esTerceraEdad = true;
             }
             
-            String especialidad = "";
-            do {
-                System.out.println("Especialidades: ");
-                System.out.println("A. Medicina General");
-                System.out.println("B. Cardiologia");
-                System.out.println("C. Traumatologia");
-                System.out.println("D. Dermatologia");
-                System.out.println("E. Pediatria");
-                System.out.print("Seleccionar la especialidad: ");
-                especialidad = consola.nextLine();
-            } while(especialidad.compareTo("A") != 0 && 
-                    especialidad.compareTo("B") != 0 &&
-                    especialidad.compareTo("C") != 0 &&
-                    especialidad.compareTo("D") != 0 &&
-                    especialidad.compareTo("E") != 0);
-            
+            String especialidad = seleccionarEspecialidad(consola);
             switch(especialidad) {
                 case "A":
                     contA++;
@@ -130,6 +110,39 @@ public class ConsultaMedica {
         Total de pacientes y total de pacientes por sexo
         */
         consultasXPacienteXSexo(contMasc, contFem);
+    }
+    
+    public static String seleccionarEspecialidad(Scanner consola) {
+            String especialidad = "";
+            do {
+                System.out.println("Especialidades: ");
+                System.out.println("A. Medicina General");
+                System.out.println("B. Cardiologia");
+                System.out.println("C. Traumatologia");
+                System.out.println("D. Dermatologia");
+                System.out.println("E. Pediatria");
+                System.out.print("Seleccionar la especialidad: ");
+                especialidad = consola.nextLine();
+            } while(especialidad.compareTo("A") != 0 && 
+                    especialidad.compareTo("B") != 0 &&
+                    especialidad.compareTo("C") != 0 &&
+                    especialidad.compareTo("D") != 0 &&
+                    especialidad.compareTo("E") != 0);
+            return especialidad;
+    }
+    
+    public static int validarAnioNacimiento(Scanner consola) {
+        String anio_nacimiento = consola.nextLine();
+        return Integer.parseInt(anio_nacimiento);
+    }
+    
+    public static String validarSexo(Scanner consola) {
+        String sexo = "";
+        do {
+            System.out.print("Sexo del Paciente [M/F]: ");
+            sexo = consola.nextLine();
+        } while(sexo.compareTo("M") != 0 && sexo.compareTo("F") != 0);
+        return sexo;
     }
     
     public static void consultasXEspecialidad(int contA, int contB, int contC, int contD, int contE) {
