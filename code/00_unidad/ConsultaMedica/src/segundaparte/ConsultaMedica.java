@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package primeraparte;
+package segundaparte;
 
 import java.util.Scanner;
 
@@ -101,52 +101,71 @@ public class ConsultaMedica {
         /*
         Cantidad de Consultas por especialidad
         */
+        consultasXEspecialidad(contA, contB, contC, contD, contE);
+        /*
+        Total de descuentos
+        */
+        double descA = contDescA*valorA*0.1;
+        double descB = contDescB*valorB*0.1;
+        double descC = contDescC*valorC*0.1;
+        double descD = contDescD*valorD*0.1;
+        double descE = contDescE*valorE*0.1;
+        consultasDescuentosXEspecialidad(descA, descB, descC, descD, descE);        
+        /*
+        Totales por especialidad
+        */
+        double totalA = (contA * valorA) - descA;
+        double totalB = (contB * valorB) - descB;
+        double totalC = (contC * valorC) - descC;
+        double totalD = (contD * valorD) - descD;
+        double totalE = (contE * valorE) - descE;
+        consultaTotalesXEspecialidad(totalA, totalB, totalC, totalD, totalE);
+        
+        /*
+        Total de consultas
+        */
+        double total = totalA + totalB + totalC + totalD + totalE;
+        consultaTotal(total);
+        /*
+        Total de pacientes y total de pacientes por sexo
+        */
+        consultasXPacienteXSexo(contMasc, contFem);
+    }
+    
+    public static void consultasXEspecialidad(int contA, int contB, int contC, int contD, int contE) {
         System.out.println("CANTIDAD DE CONSULTAS POR ESPECIALIDAD: ");
         System.out.println("A. Medicina General: " + contA);
         System.out.println("B. Cardiologia: " + contB);
         System.out.println("C. Traumatologia: " + contC);
         System.out.println("D. Dermatologia: " + contD);
-        System.out.println("E. Pediatria: " + contE);
-        
-        /*
-        Total de descuentos
-        */
+        System.out.println("E. Pediatria: " + contE);        
+    }
+    
+    public static void consultasDescuentosXEspecialidad(double descA, double descB, double descC, double descD, double descE) {
         System.out.println("TOTAL DE DESCUENTOS POR ESPECIALIDAD: ");
-        double descA = contDescA*valorA*0.1;
         System.out.println("A. Medicina General: " + descA);
-        double descB = contDescB*valorB*0.1;
         System.out.println("B. Cardiologia: " + descB);
-        double descC = contDescC*valorC*0.1;
         System.out.println("C. Traumatologia: " + descC);
-        double descD = contDescD*valorD*0.1;
         System.out.println("D. Dermatologia: " + descD);
-        double descE = contDescE*valorE*0.1;
-        System.out.println("E. Pediatria: " + descE);
-        
-        /*
-        Totales por especialidad
-        */
+        System.out.println("E. Pediatria: " + descE);        
+    }
+    // Lower camel case
+    public static void consultaTotalesXEspecialidad(double totalA, double totalB, double totalC, double totalD, double totalE) {
         System.out.println("TOTALES POR ESPECIALIDAD: ");
-        double totalA = (contA * valorA) - descA;
         System.out.println("A. Medicina General: " + totalA);
-        double totalB = (contB * valorB) - descB;
         System.out.println("B. Cardiologia: " + totalB);
-        double totalC = (contC * valorC) - descC;
         System.out.println("C. Traumatologia: " + totalC);
-        double totalD = (contD * valorD) - descD;
         System.out.println("D. Dermatologia: " + totalD);
-        double totalE = (contE * valorE) - descE;
-        System.out.println("E. Pediatria: " + totalE);
-        
-        /*
-        Total de consultas
-        */
-        System.out.println("TOTAL POR LAS CONSULTAS: " + (totalA + totalB + totalC + totalD + totalE));
-        /*
-        Total de pacientes y total de pacientes por sexo
-        */
+        System.out.println("E. Pediatria: " + totalE);        
+    }
+    
+    public static void consultaTotal(double total) {
+        System.out.println("TOTAL POR LAS CONSULTAS: " + total);
+    }
+    
+    public static void consultasXPacienteXSexo(int contMasc, int contFem) {
         System.out.println("Total de Pacientes: " + (contMasc + contFem));
         System.out.println("Total de Pacientes Masculinos: " + (contMasc));
-        System.out.println("Total de Pacientes Femeninos: " + (contFem));
+        System.out.println("Total de Pacientes Femeninos: " + (contFem));        
     }
 }
