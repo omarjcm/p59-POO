@@ -33,4 +33,13 @@ public class Consulta {
      */
     public Especialidad refEspecialidad;
 
+    /**
+     * @param valor 
+     * @return
+     */
+    public int pagarConsulta(Double valor) {
+        // TODO implement here
+        return 0;
+    }
+
 }
