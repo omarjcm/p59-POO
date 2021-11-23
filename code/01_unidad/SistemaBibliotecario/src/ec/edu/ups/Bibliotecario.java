@@ -5,18 +5,24 @@ import java.util.*;
 /**
  * @author Guillermo Pizarro
  */
-public class Categoria {
+public class Bibliotecario extends Persona {
 
     /**
      * Default constructor
      */
-    public Categoria() {
+    public Bibliotecario() {
     }
 
     /**
      * 
      */
-    private String nombre;
+    private String usuario;
+
+    /**
+     * 
+     */
+    private String clave;
+
 
 
 }

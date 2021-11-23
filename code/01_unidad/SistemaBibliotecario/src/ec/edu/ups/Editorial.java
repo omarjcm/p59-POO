@@ -16,17 +16,42 @@ public class Editorial {
     /**
      * 
      */
-    public String nombre;
+    private String nombre;
 
     /**
      * 
      */
-    public String domiclio;
+    private String domiclio;
 
 
     /**
      * 
      */
-    public Ciudad refCiudad;
+    private Ciudad refCiudad;
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDomiclio() {
+        return domiclio;
+    }
+
+    public void setDomiclio(String domiclio) {
+        this.domiclio = domiclio;
+    }
+
+    public Ciudad getRefCiudad() {
+        return refCiudad;
+    }
+
+    public void setRefCiudad(Ciudad refCiudad) {
+        this.refCiudad = refCiudad;
+    }
+
+    
 }

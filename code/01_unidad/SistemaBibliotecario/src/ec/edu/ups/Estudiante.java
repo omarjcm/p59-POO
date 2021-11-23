@@ -5,18 +5,19 @@ import java.util.*;
 /**
  * @author Guillermo Pizarro
  */
-public class Categoria {
+public class Estudiante extends Persona {
 
     /**
      * Default constructor
      */
-    public Categoria() {
+    public Estudiante() {
     }
 
     /**
      * 
      */
-    private String nombre;
+    private String domicilio;
+
 
 
 }

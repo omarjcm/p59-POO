@@ -16,12 +16,12 @@ public class Ciudad {
     /**
      * 
      */
-    public String nombre;
+    private String nombre;
 
 
     /**
      * 
      */
-    public Pais refPais;
+    private Pais refPais;
 
 }

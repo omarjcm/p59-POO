@@ -16,42 +16,107 @@ public class Libro {
     /**
      * 
      */
-    public String titulo;
+    private String titulo;
 
     /**
      * 
      */
-    public String subtitulo;
+    private String subtitulo;
 
     /**
      * 
      */
-    public String isbn;
+    private String isbn;
 
     /**
      * 
      */
-    public Integer edicion;
+    private Integer edicion;
 
     /**
      * 
      */
-    public Integer anio;
-
-
-    /**
-     * 
-     */
-    public Set<Autor> refAutor;
+    private Integer anio;
 
     /**
      * 
      */
-    public Editorial refEditorial;
+    private ArrayList<Autor> refAutor;
 
     /**
      * 
      */
-    public Set<Categoria> refCategoria;
+    private Editorial refEditorial;
 
+    /**
+     * 
+     */
+    private ArrayList<Categoria> refCategoria;
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getSubtitulo() {
+        return subtitulo;
+    }
+
+    public void setSubtitulo(String subtitulo) {
+        this.subtitulo = subtitulo;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public Integer getEdicion() {
+        return edicion;
+    }
+
+    public void setEdicion(Integer edicion) {
+        this.edicion = edicion;
+    }
+
+    public Integer getAnio() {
+        return anio;
+    }
+
+    public void setAnio(Integer anio) {
+        this.anio = anio;
+    }
+
+    public ArrayList<Autor> getRefAutor() {
+        return refAutor;
+    }
+
+    public void setRefAutor(ArrayList<Autor> refAutor) {
+        this.refAutor = refAutor;
+    }
+
+    public Editorial getRefEditorial() {
+        return refEditorial;
+    }
+
+    public void setRefEditorial(Editorial refEditorial) {
+        this.refEditorial = refEditorial;
+    }
+
+    public ArrayList<Categoria> getRefCategoria() {
+        return refCategoria;
+    }
+
+    public void setRefCategoria(ArrayList<Categoria> refCategoria) {
+        this.refCategoria = refCategoria;
+    }
+
+
+    
 }

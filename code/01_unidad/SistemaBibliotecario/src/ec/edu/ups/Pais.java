@@ -16,7 +16,7 @@ public class Pais {
     /**
      * 
      */
-    public String nombre;
+    private String nombre;
 
 
 }

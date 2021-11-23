@@ -1,6 +1,5 @@
 package ec.edu.ups;
 
-import ec.edu.ups.Libro;
 import java.util.*;
 
 /**
@@ -17,16 +16,41 @@ public class CopiaLibro {
     /**
      * 
      */
-    public String codigo;
+    private String codigo;
 
     /**
      * 
      */
-    public String estado;
+    private String estado;
 
     /**
      * 
      */
-    public Libro refLibro;
+    private Libro refLibro;
 
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Libro getRefLibro() {
+        return refLibro;
+    }
+
+    public void setRefLibro(Libro refLibro) {
+        this.refLibro = refLibro;
+    }
+
+    
 }
