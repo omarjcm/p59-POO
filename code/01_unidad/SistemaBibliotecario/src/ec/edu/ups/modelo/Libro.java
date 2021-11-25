@@ -1,4 +1,4 @@
-package ec.edu.ups;
+package ec.edu.ups.modelo;
 
 import java.util.*;
 

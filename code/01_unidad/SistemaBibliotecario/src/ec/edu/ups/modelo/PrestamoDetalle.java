@@ -1,5 +1,6 @@
-package ec.edu.ups;
+package ec.edu.ups.modelo;
 
+import ec.edu.ups.modelo.CopiaLibro;
 import java.util.*;
 
 /**

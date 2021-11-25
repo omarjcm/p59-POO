@@ -1,16 +1,16 @@
-package ec.edu.ups;
+package ec.edu.ups.modelo;
 
 import java.util.*;
 
 /**
  * @author Guillermo Pizarro
  */
-public class Autor {
+public class Ciudad {
 
     /**
      * Default constructor
      */
-    public Autor() {
+    public Ciudad() {
     }
 
     /**
@@ -18,10 +18,11 @@ public class Autor {
      */
     private String nombre;
 
+
     /**
      * 
      */
-    private String apellido;
+    private Pais refPais;
 
     public String getNombre() {
         return nombre;
@@ -31,12 +32,12 @@ public class Autor {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public Pais getRefPais() {
+        return refPais;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setRefPais(Pais refPais) {
+        this.refPais = refPais;
     }
 
     

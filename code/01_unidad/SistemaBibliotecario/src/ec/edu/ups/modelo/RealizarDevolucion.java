@@ -1,5 +1,7 @@
-package ec.edu.ups;
+package ec.edu.ups.modelo;
 
+import ec.edu.ups.modelo.Bibliotecario;
+import ec.edu.ups.modelo.Estudiante;
 import java.util.*;
 
 /**

@@ -1,22 +1,21 @@
-package ec.edu.ups;
+package ec.edu.ups.modelo;
 
 import java.util.*;
 
 /**
  * @author Guillermo Pizarro
  */
-public class Paciente extends Persona {
+public class Medico extends Persona {
 
     /**
      * Default constructor
      */
-    public Paciente() {
+    public Medico() {
     }
 
     /**
      * 
      */
-    public String sexo;
-
+    public Integer anioExperiencia;
 
 }

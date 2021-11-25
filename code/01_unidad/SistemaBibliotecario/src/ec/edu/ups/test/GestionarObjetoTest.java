@@ -4,7 +4,7 @@
  */
 package ec.edu.ups.test;
 
-import ec.edu.ups.GestionarEstudiante;
+import ec.edu.ups.controlador.GestionarEstudiante;
 
 /**
  *

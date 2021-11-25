@@ -1,16 +1,16 @@
-package ec.edu.ups;
+package ec.edu.ups.modelo;
 
 import java.util.*;
 
 /**
  * @author Guillermo Pizarro
  */
-public class Categoria {
+public class Pais {
 
     /**
      * Default constructor
      */
-    public Categoria() {
+    public Pais() {
     }
 
     /**

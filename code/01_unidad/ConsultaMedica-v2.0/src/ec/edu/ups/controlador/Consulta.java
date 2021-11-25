@@ -1,5 +1,7 @@
-package ec.edu.ups;
+package ec.edu.ups.controlador;
 
+import ec.edu.ups.modelo.Paciente;
+import ec.edu.ups.modelo.Especialidad;
 import java.util.*;
 
 /**
