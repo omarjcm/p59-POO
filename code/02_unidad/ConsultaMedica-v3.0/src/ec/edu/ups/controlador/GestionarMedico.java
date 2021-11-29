@@ -12,6 +12,7 @@ public class GestionarMedico implements GestionarObjeto {
      * Default constructor
      */
     public GestionarMedico() {
+        this.refMedicos = new ArrayList<Medico>();
     }
 
     /**
@@ -24,7 +25,7 @@ public class GestionarMedico implements GestionarObjeto {
      * @param objeto
      */
     public void registrar(Object objeto) {
-        // TODO implement here
+        this.refMedicos.add((Medico) objeto);
     }
 
     /**

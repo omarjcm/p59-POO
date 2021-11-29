@@ -12,6 +12,11 @@ public class Medico extends Persona {
      */
     public Medico() {
     }
+    
+    public Medico(String nombre, String apellido, int anioExperiencia) {
+        super(nombre, apellido);
+        this.anioExperiencia = anioExperiencia;
+    }
 
     /**
      * 

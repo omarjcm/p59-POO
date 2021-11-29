@@ -12,6 +12,7 @@ public class GestionarEspecialidad implements GestionarObjeto {
      * Default constructor
      */
     public GestionarEspecialidad() {
+        this.refEspecialidades = new ArrayList<Especialidad>();
     }
 
     /**
@@ -24,7 +25,8 @@ public class GestionarEspecialidad implements GestionarObjeto {
      * @param objeto
      */
     public void registrar(Object objeto) {
-        // TODO implement here
+        Especialidad especialidad = (Especialidad) objeto;
+        this.refEspecialidades.add(especialidad);
     }
 
     /**

@@ -18,6 +18,7 @@ public class Paciente extends Persona {
      */
     private String sexo;
 
+    private int anioNacimiento;
 
 
     /**
@@ -35,4 +36,11 @@ public class Paciente extends Persona {
         // TODO implement here
     }
 
+    public int getAnioNacimiento() {
+        return anioNacimiento;
+    }
+
+    public void setAnioNacimiento(int anioNacimiento) {
+        this.anioNacimiento = anioNacimiento;
+    }
 }

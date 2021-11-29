@@ -13,6 +13,11 @@ public class Especialidad {
     public Especialidad() {
     }
 
+    public Especialidad(String nombre, Double valor) {
+        this.nombre = nombre;
+        this.valor = valor;
+    }
+    
     /**
      * 
      */

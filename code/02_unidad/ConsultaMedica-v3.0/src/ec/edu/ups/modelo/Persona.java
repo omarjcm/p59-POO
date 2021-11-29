@@ -12,6 +12,11 @@ public class Persona {
      */
     public Persona() {
     }
+    
+    public Persona(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
 
     /**
      * 
@@ -22,11 +27,6 @@ public class Persona {
      * 
      */
     protected String apellido;
-
-    /**
-     * 
-     */
-    protected Integer anioNacimiento;
 
     /**
      * @return
@@ -57,20 +57,4 @@ public class Persona {
     public void setApellido(String value) {
         // TODO implement here
     }
-
-    /**
-     * @return
-     */
-    public Integer getAnioNacimiento() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param value
-     */
-    public void setAnioNacimiento(Integer value) {
-        // TODO implement here
-    }
-
 }
