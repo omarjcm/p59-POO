@@ -35,14 +35,14 @@ public class Especialidad {
      */
     public String getNombre() {
         // TODO implement here
-        return "";
+        return this.nombre;
     }
 
     /**
      * @param value
      */
     public void setNombre(String value) {
-        // TODO implement here
+        this.nombre = value;
     }
 
     /**
@@ -50,14 +50,14 @@ public class Especialidad {
      */
     public Double getValor() {
         // TODO implement here
-        return null;
+        return this.valor;
     }
 
     /**
      * @param value
      */
     public void setValor(Double value) {
-        // TODO implement here
+        this.valor = value;
     }
 
 }

@@ -26,51 +26,44 @@ public class Consulta {
     /**
      * 
      */
-    public Paciente refPaciente;
+    private Paciente refPaciente;
 
     /**
      * 
      */
-    public Especialidad refEspecialidad;
+    private Especialidad refEspecialidad;
 
-
-    /**
-     * @param valor 
-     * @return
-     */
-    public int pagarConsulta(Double valor) {
-        // TODO implement here
-        return 0;
-    }
-
-    /**
-     * @return
-     */
     public Double getDescuento() {
-        // TODO implement here
-        return null;
+        return descuento;
     }
 
-    /**
-     * @param value
-     */
-    public void setDescuento(Double value) {
-        // TODO implement here
+    public void setDescuento(Double descuento) {
+        this.descuento = descuento;
     }
 
-    /**
-     * @return
-     */
     public Double getValorTotal() {
-        // TODO implement here
-        return null;
+        return valorTotal;
     }
 
-    /**
-     * @param value
-     */
-    public void setValorTotal(Double value) {
-        // TODO implement here
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
+    public Paciente getRefPaciente() {
+        return refPaciente;
+    }
+
+    public void setRefPaciente(Paciente refPaciente) {
+        this.refPaciente = refPaciente;
+    }
+
+    public Especialidad getRefEspecialidad() {
+        return refEspecialidad;
+    }
+
+    public void setRefEspecialidad(Especialidad refEspecialidad) {
+        this.refEspecialidad = refEspecialidad;
+    }
+    
+    
 }

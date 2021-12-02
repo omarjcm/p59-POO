@@ -12,6 +12,7 @@ public class GestionarConsulta implements GestionarObjeto {
      * Default constructor
      */
     public GestionarConsulta() {
+        this.refConsultas = new ArrayList<Consulta>();
     }
 
     /**
@@ -24,7 +25,8 @@ public class GestionarConsulta implements GestionarObjeto {
      * @param objeto
      */
     public void registrar(Object objeto) {
-        // TODO implement here
+        Consulta consulta = (Consulta) objeto;
+        this.refConsultas.add( consulta );
     }
 
     /**

@@ -20,6 +20,15 @@ public class GestionarEspecialidad implements GestionarObjeto {
      */
     private ArrayList<Especialidad> refEspecialidades;
 
+    public ArrayList<Especialidad> getRefEspecialidades() {
+        return refEspecialidades;
+    }
+
+    public void setRefEspecialidades(ArrayList<Especialidad> refEspecialidades) {
+        this.refEspecialidades = refEspecialidades;
+    }
+
+    
 
     /**
      * @param objeto

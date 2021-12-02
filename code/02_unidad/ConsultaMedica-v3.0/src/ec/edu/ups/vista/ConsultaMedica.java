@@ -15,6 +15,9 @@ public class ConsultaMedica {
      */
     public ConsultaMedica() {
         this.cargarEspecialidades();
+        
+        this.refGestionarPaciente = new GestionarPaciente();
+        this.refGestionarConsulta = new GestionarConsulta();
     }
 
     public void cargarEspecialidades() {
@@ -29,18 +32,6 @@ public class ConsultaMedica {
         this.refGestionarEspecialidad.registrar( new Especialidad("Traumatologia", 50.0) );
         this.refGestionarEspecialidad.registrar( new Especialidad("Dermatologia", 45.0) );
         this.refGestionarEspecialidad.registrar( new Especialidad("Pediatria", 40.0) );
-    }
-    
-    public void cargarMedicos() {
-        this.refGestionarMedico = new GestionarMedico();
-        
-        Medico obj = new Medico();
-        obj.setNombre("Solon");
-        obj.setApellido("Castillo");
-        obj.setAnioExperiencia( 40 );
-        this.refGestionarMedico.registrar(obj);
-        obj = new Medico("Guillermo", "Muñoz", 40);
-        this.refGestionarMedico.registrar(obj);
     }
     
     /**

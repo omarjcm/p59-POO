@@ -33,14 +33,30 @@ public class GestionarPaciente implements GestionarObjeto {
      * @param objeto
      */
     public void modificar(Object objeto) {
-        // TODO implement here
+        Paciente paciente = (Paciente) objeto;
+        for (int i=0; i<this.refPacientes.size(); i++) {
+            Paciente temp = this.refPacientes.get(i);
+            if (temp.getNombre().compareTo( paciente.getNombre() ) == 0 &&
+                    temp.getApellido().compareTo( paciente.getApellido() ) == 0) {
+                this.refPacientes.set(i, new Paciente(paciente));
+                break;
+            }
+        }
     }
 
     /**
      * @param objeto
      */
     public void eliminar(Object objeto) {
-        // TODO implement here
+        Paciente paciente = (Paciente) objeto;
+        for (int i=0; i<this.refPacientes.size(); i++) {
+            Paciente temp = this.refPacientes.get(i);
+            if (temp.getNombre().compareTo( paciente.getNombre() ) == 0 &&
+                    temp.getApellido().compareTo( paciente.getApellido() ) == 0) {
+                this.refPacientes.remove(i);
+                break;
+            }
+        }
     }
 
     /**
@@ -48,8 +64,16 @@ public class GestionarPaciente implements GestionarObjeto {
      * @return
      */
     public ArrayList leer(Object objeto) {
-        // TODO implement here
-        return null;
+        ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
+        Paciente paciente = (Paciente) objeto;
+        for (int i=0; i<this.refPacientes.size(); i++) {
+            Paciente temp = this.refPacientes.get(i);
+            if (temp.getNombre().contains( paciente.getNombre() ) ||
+                    temp.getApellido().contains( paciente.getApellido() )) {
+                pacientes.add( temp );
+            }
+        }
+        return pacientes;
     }
 
 }

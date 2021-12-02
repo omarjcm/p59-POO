@@ -33,14 +33,14 @@ public class Persona {
      */
     public String getNombre() {
         // TODO implement here
-        return "";
+        return this.nombre;
     }
 
     /**
      * @param value
      */
     public void setNombre(String value) {
-        // TODO implement here
+        this.nombre = value;
     }
 
     /**
@@ -48,13 +48,13 @@ public class Persona {
      */
     public String getApellido() {
         // TODO implement here
-        return "";
+        return this.apellido;
     }
 
     /**
      * @param value
      */
     public void setApellido(String value) {
-        // TODO implement here
+        this.apellido = value;
     }
 }

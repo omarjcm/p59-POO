@@ -1,5 +1,6 @@
 package ec.edu.ups.modelo;
 
+import static ec.edu.ups.vista.ConsultaMedicaCLI.ANIO_ACTUAL;
 import java.util.*;
 
 /**
@@ -7,10 +8,17 @@ import java.util.*;
  */
 public class Paciente extends Persona {
 
+    public static int ANIO_ACTUAL = 2021;
     /**
      * Default constructor
      */
     public Paciente() {
+    }
+    
+    public Paciente(Paciente paciente) {
+        super(paciente.getNombre(), paciente.getApellido());
+        this.sexo = paciente.getSexo();
+        this.anioNacimiento = paciente.getAnioNacimiento();
     }
 
     /**
@@ -26,14 +34,14 @@ public class Paciente extends Persona {
      */
     public String getSexo() {
         // TODO implement here
-        return "";
+        return this.sexo;
     }
 
     /**
      * @param value
      */
     public void setSexo(String value) {
-        // TODO implement here
+        this.sexo = value;
     }
 
     public int getAnioNacimiento() {
@@ -42,5 +50,9 @@ public class Paciente extends Persona {
 
     public void setAnioNacimiento(int anioNacimiento) {
         this.anioNacimiento = anioNacimiento;
+    }
+    
+    public Boolean esTerceraEdad() {
+        return ((ANIO_ACTUAL - this.anioNacimiento) >= 65);
     }
 }

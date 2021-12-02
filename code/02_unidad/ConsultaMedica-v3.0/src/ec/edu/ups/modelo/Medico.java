@@ -29,14 +29,14 @@ public class Medico extends Persona {
      */
     public Integer getAnioExperiencia() {
         // TODO implement here
-        return null;
+        return this.anioExperiencia;
     }
 
     /**
      * @param value
      */
     public void setAnioExperiencia(Integer value) {
-        // TODO implement here
+        this.anioExperiencia = value;
     }
 
 }
