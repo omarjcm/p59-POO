@@ -15,6 +15,9 @@ import javax.swing.table.DefaultTableModel;
 public class VPersona extends javax.swing.JFrame {
     
     private DefaultTableModel dtm;
+    private Persona persona;
+    private Integer numFila;
+    private String accion;
     
     /**
      * Creates new form VPersona
@@ -28,8 +31,21 @@ public class VPersona extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo( null );
         this.dtm = dtm;
+        this.persona = null;
     }
 
+    public VPersona(DefaultTableModel dtm, Persona persona, int numFila) {
+        initComponents();
+        this.setLocationRelativeTo( null );
+        this.dtm = dtm;
+        this.persona = persona;
+        this.numFila = numFila;
+        
+        this.txtNombre.setText( this.persona.getNombre() );
+        this.txtApellido.setText( this.persona.getApellido() );
+        this.txtCorreoElectronico.setText( this.persona.getCorreoElectronico() );
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -129,13 +145,23 @@ public class VPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        Persona persona = new Persona();
-        persona.setNombre( txtNombre.getText() );
-        persona.setApellido( txtApellido.getText() );
-        persona.setCorreoElectronico( txtCorreoElectronico.getText() );
-        
-        this.dtm.addRow( persona.getDatos(1) );
-        
+        if (this.persona != null) {
+            this.persona.setNombre( this.txtNombre.getText() );
+            this.persona.setApellido( this.txtApellido.getText() );
+            this.persona.setCorreoElectronico( this.txtCorreoElectronico.getText() );  
+            
+            this.dtm.setValueAt(this.persona.getId(), this.numFila, 0);
+            this.dtm.setValueAt(this.persona.getNombre(), this.numFila, 1);
+            this.dtm.setValueAt(this.persona.getApellido(), this.numFila, 2);
+            this.dtm.setValueAt(this.persona.getCorreoElectronico(), this.numFila, 3);
+        } else {
+            Persona persona = new Persona();
+            persona.setNombre( txtNombre.getText() );
+            persona.setApellido( txtApellido.getText() );
+            persona.setCorreoElectronico( txtCorreoElectronico.getText() );
+
+            this.dtm.addRow( persona.getDatos(1) );
+        }        
         this.setVisible( false );
     }//GEN-LAST:event_btnGuardarActionPerformed
 

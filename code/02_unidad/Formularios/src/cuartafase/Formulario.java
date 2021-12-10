@@ -5,6 +5,8 @@
 package cuartafase;
 
 import java.util.ArrayList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,7 +15,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Formulario extends javax.swing.JFrame {
 
-    private ArrayList<Persona> personas;
+    private Persona persona;
+    private Integer numFila;
     private DefaultTableModel dtm;
     
     /**
@@ -39,6 +42,8 @@ public class Formulario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
         btnAgregar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -66,6 +71,11 @@ public class Formulario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDatosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDatos);
 
         btnAgregar.setText("Agregar");
@@ -74,6 +84,17 @@ public class Formulario extends javax.swing.JFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
+
+        btnModificar.setText("Modificar");
+        btnModificar.setEnabled(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,7 +106,12 @@ public class Formulario extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnModificar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEliminar)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -95,7 +121,11 @@ public class Formulario extends javax.swing.JFrame {
                 .addComponent(btnAgregar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnModificar)
+                    .addComponent(btnEliminar))
+                .addContainerGap())
         );
 
         pack();
@@ -105,6 +135,26 @@ public class Formulario extends javax.swing.JFrame {
         VPersona vpersona = new VPersona(this.dtm);
         vpersona.setVisible(true);
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
+        this.btnModificar.setEnabled( true );
+        
+        this.dtm = (DefaultTableModel) this.tblDatos.getModel();
+        this.persona = new Persona();
+        this.persona.setId( Integer.parseInt( this.dtm.getValueAt(this.tblDatos.getSelectedRow(), 0).toString() ) );
+        this.persona.setNombre( this.dtm.getValueAt( this.tblDatos.getSelectedRow(), 1).toString() );
+        this.persona.setApellido( this.dtm.getValueAt( this.tblDatos.getSelectedRow(), 2).toString() );
+        this.persona.setCorreoElectronico( this.dtm.getValueAt( this.tblDatos.getSelectedRow(), 3).toString() );
+        
+        this.numFila = this.tblDatos.getSelectedRow();
+    }//GEN-LAST:event_tblDatosMouseClicked
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        this.btnModificar.setEnabled( false );
+        
+        VPersona vpersona = new VPersona(this.dtm, this.persona, this.numFila);
+        vpersona.setVisible(true);
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,6 +193,8 @@ public class Formulario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblDatos;
     // End of variables declaration//GEN-END:variables
