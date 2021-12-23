@@ -4,6 +4,8 @@
  */
 package quintafase;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Core i5 11va
@@ -18,6 +20,8 @@ public class Ventana extends javax.swing.JFrame {
         initComponents();
         this.tabla = new Tabla();
         this.tabla.verTabla(this.tblDatos);
+        
+        this.setLocationRelativeTo( null );
     }
 
     /**
@@ -45,6 +49,11 @@ public class Ventana extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDatosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDatos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -66,6 +75,28 @@ public class Ventana extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
+        // se obtiene el indice de la columna (0 a tamanio de las columnas) en la tabla donde se le da click.
+        int columna = this.tblDatos.getColumnModel().getColumnIndexAtX( evt.getX() );
+        // se obtiene el indice de la fila (0 a tamanio de las filas) en la tabla donde se le da click.
+        int fila = evt.getY()/this.tblDatos.getRowHeight();
+        
+        if (fila < this.tblDatos.getRowCount() && fila >= 0 && 
+                columna < this.tblDatos.getColumnCount() && columna >= 0) {
+            Object value = this.tblDatos.getValueAt(fila, columna);
+            if (value instanceof JButton) {
+                ((JButton)value).doClick();
+                JButton boton = (JButton) value;
+                if (boton.getName().equals("M")) {
+                    
+                }
+                if (boton.getName().equals("E")) {
+                    
+                }
+            }
+        }
+    }//GEN-LAST:event_tblDatosMouseClicked
 
     /**
      * @param args the command line arguments
