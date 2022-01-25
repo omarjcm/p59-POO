@@ -12,6 +12,6 @@ public class Constantes {
     public final static int ANCHO = 100;
     public final static int ALTO = 50;
     
-    public final static int ANCHO_VENTANA = 200;
-    public final static int ALTO_VENTANA = 200;
+    public final static int ANCHO_VENTANA = 400;
+    public final static int ALTO_VENTANA = 400;
 }

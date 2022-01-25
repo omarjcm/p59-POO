@@ -5,6 +5,7 @@
 package ejercicio_01.vista;
 
 import ejercicio_01.controlador.Constantes;
+import ejercicio_01.modelo.Circulo;
 import ejercicio_01.modelo.Rectangulo;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -26,5 +27,10 @@ public class RectanguloPanel extends JPanel {
         
         g.setColor(Color.red);
         g.fillRect(objeto.getX(), objeto.getY(), objeto.getAncho(), objeto.getAlto());
+        
+        g.setColor(Color.ORANGE);
+        coordenadas = new Point(150, 150);
+        Circulo objeto2 = new Circulo(Color.ORANGE, coordenadas, Constantes.ANCHO);
+        g.fillOval(objeto2.getX(), objeto2.getY(), objeto2.getRadio(), objeto2.getRadio());
     }
 }

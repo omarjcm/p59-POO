@@ -17,6 +17,7 @@ public class FigurasGeometricasApp {
         JFrame ventana = new JFrame();
         ventana.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         ventana.setSize( Constantes.ANCHO_VENTANA, Constantes.ALTO_VENTANA );
+        ventana.setLocationRelativeTo(null);
         ventana.setTitle( "Un panel con un rectangulo." );
         
         RectanguloPanel panel = new RectanguloPanel();
