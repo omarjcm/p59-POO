@@ -25,12 +25,12 @@ public class RectanguloPanel extends JPanel {
         Point coordenadas = new Point(20, 40);
         Rectangulo objeto = new Rectangulo(Color.RED, coordenadas, Constantes.ANCHO, Constantes.ALTO);
         
-        g.setColor(Color.red);
+        g.setColor(objeto.getColor());
         g.fillRect(objeto.getX(), objeto.getY(), objeto.getAncho(), objeto.getAlto());
         
-        g.setColor(Color.ORANGE);
         coordenadas = new Point(150, 150);
         Circulo objeto2 = new Circulo(Color.ORANGE, coordenadas, Constantes.ANCHO);
+        g.setColor(objeto2.getColor());
         g.fillOval(objeto2.getX(), objeto2.getY(), objeto2.getRadio(), objeto2.getRadio());
     }
 }
