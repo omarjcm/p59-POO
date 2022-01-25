@@ -1,19 +1,17 @@
-package ec.edu.ups.vista;
+package ec.edu.ups.controlador;
 
-import ec.edu.ups.controlador.*;
 import ec.edu.ups.modelo.Especialidad;
-import ec.edu.ups.modelo.Medico;
-import java.util.*;
+import ec.edu.ups.vista.MenuPrincipal;
 
 /**
  * @author Guillermo Pizarro
  */
-public class ConsultaMedica {
+public class GestionarConsultaMedica {
 
     /**
      * Default constructor
      */
-    public ConsultaMedica() {
+    public GestionarConsultaMedica() {
         this.cargarEspecialidades();
         
         this.refGestionarPaciente = new GestionarPaciente();

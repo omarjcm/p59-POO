@@ -1,5 +1,6 @@
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.GestionarConsultaMedica;
 import ec.edu.ups.modelo.Consulta;
 import ec.edu.ups.modelo.Especialidad;
 import ec.edu.ups.modelo.Paciente;
@@ -19,7 +20,7 @@ public class ConsultaMedicaCLI {
     }
 
     public static void main(String[] args) {
-        ConsultaMedica app = new ConsultaMedica();
+        GestionarConsultaMedica app = new GestionarConsultaMedica();
         MenuPrincipal menu = new MenuPrincipal();
         
         while(true) {

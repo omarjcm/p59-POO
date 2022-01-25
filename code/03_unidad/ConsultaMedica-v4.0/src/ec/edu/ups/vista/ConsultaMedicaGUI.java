@@ -4,6 +4,7 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.GestionarConsultaMedica;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 public class ConsultaMedicaGUI extends javax.swing.JFrame {
 
     private TblConsultas consultas;
-    private ConsultaMedica app;
+    private GestionarConsultaMedica app;
     
     /**
      * Creates new form ConsultaMedicaGUI
@@ -21,7 +22,7 @@ public class ConsultaMedicaGUI extends javax.swing.JFrame {
     public ConsultaMedicaGUI() {
         initComponents();
         
-        this.app = new ConsultaMedica();
+        this.app = new GestionarConsultaMedica();
         
         this.setLocationRelativeTo( null );
         this.consultas = new TblConsultas();

@@ -4,6 +4,7 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.GestionarConsultaMedica;
 import ec.edu.ups.modelo.Consulta;
 import ec.edu.ups.modelo.Especialidad;
 import ec.edu.ups.modelo.Paciente;
@@ -19,23 +20,21 @@ import javax.swing.table.DefaultTableModel;
 public class ConsultaGUI extends javax.swing.JFrame {
 
     private DefaultTableModel modelo;
-    private ConsultaMedica consulta;
-    private ArrayList<Especialidad> especialidades;
+    private GestionarConsultaMedica consulta;
     
     /**
      * Creates new form PacienteGUI
      */
-    public ConsultaGUI(DefaultTableModel modelo, ConsultaMedica consulta) {
+    public ConsultaGUI(DefaultTableModel modelo, GestionarConsultaMedica consulta) {
         initComponents();
         this.setDefaultCloseOperation( HIDE_ON_CLOSE );
         this.setLocationRelativeTo(null);
         
         this.consulta = consulta;
         this.modelo = modelo;
-        this.especialidades = this.consulta.getRefGestionarEspecialidad().getRefEspecialidades();
         
         DefaultListModel lista = new DefaultListModel();
-        for (Especialidad objeto : this.especialidades) {
+        for (Especialidad objeto : this.consulta.getRefGestionarEspecialidad().getRefEspecialidades()) {
             lista.addElement( objeto.getNombre() );
         }
         this.lstEspecialidades.setModel(lista);
@@ -201,7 +200,7 @@ public class ConsultaGUI extends javax.swing.JFrame {
         paciente.setAnioNacimiento( this.txtAnioNacimiento.getText() );
         
         String texto = this.lstEspecialidades.getSelectedValue();
-        for (Especialidad temp : this.especialidades) {
+        for (Especialidad temp : this.consulta.getRefGestionarEspecialidad().getRefEspecialidades()) {
             if (temp.getNombre().equals( texto )) {
                 especialidad = new Especialidad( temp );
             }
