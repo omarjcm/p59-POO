@@ -4,7 +4,6 @@
  */
 package ejercicio_02.vista;
 
-import ejercicio_01.vista.*;
 import ejercicio_01.controlador.Constantes;
 import java.awt.Color;
 import javax.swing.JFrame;
