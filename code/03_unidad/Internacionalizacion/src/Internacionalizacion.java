@@ -16,15 +16,19 @@ public class Internacionalizacion {
         String recurso = "saludo";
         
         ResourceBundle rb = ResourceBundle.getBundle(recurso);
-        System.out.println("Predeterminado: " + rb.getString("hola.texto"));
+        System.out.println("Español: " + rb.getString("hola.texto"));
+        System.out.println("Español: " + rb.getString("hola.despedida"));
         
         rb = ResourceBundle.getBundle(recurso, Locale.ENGLISH);
-        System.out.println("Predeterminado: " + rb.getString("hola.texto"));
+        System.out.println("Inglés: " + rb.getString("hola.texto"));
+        System.out.println("Inglés: " + rb.getString("hola.despedida"));
         
         rb = ResourceBundle.getBundle(recurso, Locale.FRENCH);
-        System.out.println("Predeterminado: " + rb.getString("hola.texto"));
+        System.out.println("Francés: " + rb.getString("hola.texto"));
+        System.out.println("Francés: " + rb.getString("hola.despedida"));
         
         rb = ResourceBundle.getBundle(recurso, Locale.GERMAN);
-        System.out.println("Predeterminado: " + rb.getString("hola.texto"));
+        System.out.println("Alemán: " + rb.getString("hola.texto"));
+        System.out.println("Alemán: " + rb.getString("hola.despedida"));
     }
 }
