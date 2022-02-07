@@ -4,6 +4,7 @@
  */
 package ec.edu.ups.modelo.datos;
 
+import ec.edu.ups.controlador.Constantes;
 import ec.edu.ups.modelo.Contacto;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,16 +21,14 @@ import java.util.logging.Logger;
  * @author Core i5 11va
  */
 public class ArchivoBinario {
-    private String nombreArchivo;
     
     public ArchivoBinario(String nombreArchivo) {
-        this.nombreArchivo = nombreArchivo;
     }
     
-    public Boolean escribirArchivo(LinkedList<Contacto> contactos) {
+    public static Boolean escribir(LinkedList<Contacto> contactos) {
         ObjectOutputStream output = null;
         try {
-            FileOutputStream file = new FileOutputStream("contactos.dat");
+            FileOutputStream file = new FileOutputStream( Constantes.NOMBRE_ARCHIVO );
             output = new ObjectOutputStream( file );
             
             output.writeObject( contactos );
@@ -44,10 +43,10 @@ public class ArchivoBinario {
         return false;
     }
     
-    public LinkedList<Contacto> leerArchivo() {
+    public static LinkedList<Contacto> leer() {
         ObjectInputStream lector = null;
         try {
-            FileInputStream file = new FileInputStream("contactos.dat");
+            FileInputStream file = new FileInputStream( Constantes.NOMBRE_ARCHIVO );
             lector = new ObjectInputStream( file );
             
             LinkedList<Contacto> contactos = (LinkedList<Contacto>) lector.readObject();
