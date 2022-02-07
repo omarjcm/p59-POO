@@ -17,9 +17,15 @@ public class GestionarContacto extends GestionarObjeto {
     private LinkedList<Contacto> contactos;
     
     public GestionarContacto(){
-        this.contactos = new LinkedList<Contacto>();
+        this.contactos = ArchivoBinario.leer();
+        if (this.contactos == null)
+            this.contactos = new LinkedList<Contacto>();
     }
 
+    public LinkedList<Contacto> getContactos() {
+        return this.contactos;
+    }
+    
     @Override
     public Boolean registrar(Object objeto) {
         Contacto contacto = (Contacto) objeto;
@@ -30,12 +36,29 @@ public class GestionarContacto extends GestionarObjeto {
 
     @Override
     public Boolean modificar(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Contacto contacto = (Contacto) objeto;
+        
+        for (int i=0; i<this.contactos.size(); i++) {
+            Contacto elemento = this.contactos.get(i);
+            if (contacto.getId().equals( elemento.getId() )) {
+                this.contactos.set(i, contacto);
+            }
+        }
+        return ArchivoBinario.escribir(this.contactos);
     }
 
     @Override
     public Boolean eliminar(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Contacto contacto = (Contacto) objeto;
+        
+        for (int i=0; i<this.contactos.size(); i++) {
+            Contacto elemento = this.contactos.get(i);
+            if (contacto.getId().equals( elemento.getId() )) {
+                this.contactos.remove(i);
+                break;
+            }
+        }
+        return ArchivoBinario.escribir(this.contactos);
     }
 
     @Override
@@ -47,5 +70,16 @@ public class GestionarContacto extends GestionarObjeto {
     public LinkedList<Object> listar(Object objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    public Contacto buscarIdPorNombreApellidoTelefono(Contacto contacto) {
+        for (Contacto objeto : this.contactos) {
+            if (objeto.getNombre().equals( contacto.getNombre() ) && 
+                    objeto.getApellido().equals( contacto.getApellido() ) &&
+                    objeto.getTelefono().equals( contacto.getTelefono() )) {
+                contacto.setId( objeto.getId() );
+                return contacto;
+            }
+        }
+        return null;
+    }
 }

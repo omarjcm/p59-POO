@@ -21,9 +21,9 @@ public class ContactosTbl {
         tabla.setDefaultRenderer(Object.class, new Render());
         
         JButton modificarBtn = new JButton("Modificar");
-        modificarBtn.setName("modificar");
+        modificarBtn.setName("M");
         JButton eliminarBtn = new JButton("Eliminar");
-        eliminarBtn.setName("eliminar");
+        eliminarBtn.setName("E");
         
         DefaultTableModel modelo = new DefaultTableModel(
                 new Object[][]{},

@@ -5,6 +5,7 @@
 package ec.edu.ups.modelo;
 
 import java.io.Serializable;
+import java.util.UUID;
 import javax.swing.JButton;
 
 /**
@@ -13,11 +14,13 @@ import javax.swing.JButton;
  */
 public class Contacto implements Serializable {
     
+    private String id;
     private String nombre;
     private String apellido;
     private String telefono;
     
     public Contacto() {
+        this.id = UUID.randomUUID().toString();
     }
     
     public Contacto(String nombre, String apellido, String telefono) {
@@ -26,6 +29,14 @@ public class Contacto implements Serializable {
         this.telefono = telefono;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
     public String getNombre() {
         return nombre;
     }

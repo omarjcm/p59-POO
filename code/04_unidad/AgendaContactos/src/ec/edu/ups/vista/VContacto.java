@@ -6,6 +6,7 @@ package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.GestionarContacto;
 import ec.edu.ups.modelo.Contacto;
+import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,6 +19,27 @@ public class VContacto extends javax.swing.JFrame {
     private DefaultTableModel modelo;
     private GestionarContacto app;
     
+    private Contacto contacto;
+    private int filaSeleccionada;
+    
+    public VContacto(DefaultTableModel modelo, GestionarContacto app, Contacto contacto, int filaSeleccionada) {
+        initComponents();
+        
+        this.setLocationRelativeTo( null );
+        this.setDefaultCloseOperation( HIDE_ON_CLOSE );
+        
+        this.modelo = modelo;
+        this.app = app;
+        this.contacto = contacto;
+        this.filaSeleccionada = filaSeleccionada;
+        
+        this.nombreTxt.setText( this.contacto.getNombre() );
+        this.apellidoTxt.setText( this.contacto.getApellido() );
+        this.telefonoTxt.setText( this.contacto.getTelefono() );
+        
+        this.contacto = this.app.buscarIdPorNombreApellidoTelefono( this.contacto );
+    }
+    
     public VContacto(DefaultTableModel modelo, GestionarContacto app) {
         initComponents();
         
@@ -26,7 +48,18 @@ public class VContacto extends javax.swing.JFrame {
         
         this.modelo = modelo;
         this.app = app;
+        this.contacto = null;
     }
+    
+    public void cargarDatos() {
+        this.modelo.setRowCount(0);
+        
+        LinkedList<Contacto> contactos = this.app.getContactos();
+        for (Contacto contacto : contactos) {
+            this.modelo.addRow( contacto.getDatos() );
+        }        
+    }
+    
     /**
      * Creates new form VContacto
      */
@@ -158,15 +191,29 @@ public class VContacto extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarBtnActionPerformed
 
     private void guardarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarBtnActionPerformed
-        Contacto contacto = new Contacto();
-        contacto.setNombre( this.nombreTxt.getText() );
-        contacto.setApellido( this.apellidoTxt.getText() );
-        contacto.setTelefono( this.telefonoTxt.getText() );
-        
-        this.app.registrar( contacto );
-        
-        JOptionPane.showMessageDialog(this, "Contacto registrado.");
-        
+        if (this.contacto == null) {
+            this.contacto = new Contacto();
+            
+            this.contacto.setNombre( this.nombreTxt.getText() );
+            this.contacto.setApellido( this.apellidoTxt.getText() );
+            this.contacto.setTelefono( this.telefonoTxt.getText() );
+
+            this.app.registrar( this.contacto );
+            this.cargarDatos();
+
+            JOptionPane.showMessageDialog(this, "Contacto registrado.");            
+        } else if (this.contacto != null) {            
+            this.contacto.setNombre( this.nombreTxt.getText() );
+            this.contacto.setApellido( this.apellidoTxt.getText() );
+            this.contacto.setTelefono( this.telefonoTxt.getText() );
+
+            this.app.modificar( this.contacto );
+            
+            this.modelo.setValueAt(this.contacto.getNombre(), this.filaSeleccionada, 0);
+            this.modelo.setValueAt(this.contacto.getApellido(), this.filaSeleccionada, 1);
+            this.modelo.setValueAt(this.contacto.getTelefono(), this.filaSeleccionada, 2);            
+        }
+        this.setVisible(false);
     }//GEN-LAST:event_guardarBtnActionPerformed
 
     /**

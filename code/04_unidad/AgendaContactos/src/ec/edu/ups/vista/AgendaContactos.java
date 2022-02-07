@@ -5,6 +5,10 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.GestionarContacto;
+import ec.edu.ups.modelo.Contacto;
+import java.util.LinkedList;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,7 +33,15 @@ public class AgendaContactos extends javax.swing.JFrame {
         this.dataTbl = new ContactosTbl();
         this.dataTbl.verTabla( this.contactosTbl );
         
-        
+        this.cargarTabla();
+    }
+    
+    public void cargarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) this.contactosTbl.getModel();
+        LinkedList<Contacto> contactos = this.app.getContactos();
+        for (Contacto contacto : contactos) {
+            modelo.addRow( contacto.getDatos() );
+        }        
     }
 
     /**
@@ -60,6 +72,11 @@ public class AgendaContactos extends javax.swing.JFrame {
 
         buscarBtn.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         buscarBtn.setText("Buscar");
+        buscarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarBtnActionPerformed(evt);
+            }
+        });
 
         buscarTxt.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
@@ -75,6 +92,11 @@ public class AgendaContactos extends javax.swing.JFrame {
 
             }
         ));
+        contactosTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                contactosTblMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(contactosTbl);
 
         agregarBtn.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -146,13 +168,73 @@ public class AgendaContactos extends javax.swing.JFrame {
     private void agregarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBtnActionPerformed
         VContacto contacto = new VContacto((DefaultTableModel) this.contactosTbl.getModel(), this.app);
         contacto.setVisible( true );
-        
     }//GEN-LAST:event_agregarBtnActionPerformed
 
     private void cerrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarBtnActionPerformed
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_cerrarBtnActionPerformed
+
+    private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
+        String texto = this.buscarTxt.getText();
+        
+        DefaultTableModel modelo = (DefaultTableModel) this.contactosTbl.getModel();
+        modelo.setRowCount(0);
+        
+        for (int i=0; i < this.app.getContactos().size(); i++) {
+            Contacto contacto = this.app.getContactos().get(i);
+            if (contacto.getNombre().contains(texto) || contacto.getApellido().contains(texto) || contacto.getTelefono().contains(texto)) {
+                modelo.addRow( contacto.getDatos() );
+            }
+        }
+    }//GEN-LAST:event_buscarBtnActionPerformed
+
+    private void contactosTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contactosTblMouseClicked
+        // se obtiene el indice de la columna (0 a tamanio de las columnas) en la tabla donde se le da click.
+        int columna = this.contactosTbl.getColumnModel().getColumnIndexAtX( evt.getX() );
+        // se obtiene el indice de la fila (0 a tamanio de las filas) en la tabla donde se le da click.
+        int fila = evt.getY() / this.contactosTbl.getRowHeight();
+        
+        if (fila < this.contactosTbl.getRowCount() && fila >= 0 &&
+                columna < this.contactosTbl.getColumnCount() && columna >= 0) {
+            Object value = this.contactosTbl.getValueAt(fila, columna);
+            if (value instanceof JButton) {
+                ((JButton)value).doClick();
+                JButton boton = (JButton) value;
+
+                Contacto contacto = new Contacto();
+                contacto.setNombre( this.contactosTbl.getValueAt( this.contactosTbl.getSelectedRow(), 0).toString() );
+                contacto.setApellido( this.contactosTbl.getValueAt( this.contactosTbl.getSelectedRow(), 1).toString() );
+                contacto.setTelefono( this.contactosTbl.getValueAt( this.contactosTbl.getSelectedRow(), 2).toString() );
+
+                contacto = this.app.buscarIdPorNombreApellidoTelefono(contacto);
+                
+                if (boton.getName().equals("M")) {
+                    
+                    VContacto vcontacto = new VContacto((DefaultTableModel) this.contactosTbl.getModel(), this.app, contacto, this.contactosTbl.getSelectedRow());
+                    vcontacto.setVisible( true );
+                }
+                if (boton.getName().equals("E")) {
+                    Object[] options = {"Si", "No"};
+                    int n = JOptionPane.showOptionDialog(this,
+                                "Esta seguro de eliminar el registro?",
+                                "Agenda de Contactos",
+                                JOptionPane.YES_NO_OPTION,
+                                JOptionPane.QUESTION_MESSAGE,
+                                null,     //do not use a custom Icon
+                                options,  //the titles of buttons
+                                options[1]); //default button title
+                    if (n == 0) {
+                        DefaultTableModel modelo = (DefaultTableModel) this.contactosTbl.getModel();
+                        modelo.removeRow( fila );
+                        
+                        this.app.eliminar( contacto );
+                    }
+                }
+            }
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contactosTblMouseClicked
 
     /**
      * @param args the command line arguments
