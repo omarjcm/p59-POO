@@ -4,9 +4,12 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.Constantes;
 import ec.edu.ups.controlador.GestionarContacto;
 import ec.edu.ups.modelo.Contacto;
 import java.util.LinkedList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,27 +23,41 @@ public class AgendaContactos extends javax.swing.JFrame {
     private ContactosTbl dataTbl;
     private GestionarContacto app;
     
+    private ResourceBundle rb;
+    
     /**
      * Creates new form AgendaContactos
      */
     public AgendaContactos() {
         initComponents();
         
+        this.rb = ResourceBundle.getBundle( Constantes.RECURSO, Locale.ENGLISH );
+        this.cargarIdioma();
+        
         this.setLocationRelativeTo(null);
         
         this.app = new GestionarContacto();
         
         this.dataTbl = new ContactosTbl();
-        this.dataTbl.verTabla( this.contactosTbl );
+        this.dataTbl.verTabla( this.contactosTbl, this.rb );
         
         this.cargarTabla();
+    }
+    
+    public void cargarIdioma() {
+        this.setTitle( this.rb.getString( Constantes.VENTANA_TITULO ) );
+        this.tituloLbl.setText( this.rb.getString( Constantes.VENTANA_TITULO ) );            
+        this.buscarLbl.setText( this.rb.getString( Constantes.VENTANA_BUSCAR ) + ":" );
+        this.buscarBtn.setText( this.rb.getString( Constantes.VENTANA_BUSCAR ) );
+        this.agregarBtn.setText( this.rb.getString( Constantes.VENTANA_AGREGAR ) );
+        this.cerrarBtn.setText( this.rb.getString( Constantes.VENTANA_CERRAR ) );
     }
     
     public void cargarTabla() {
         DefaultTableModel modelo = (DefaultTableModel) this.contactosTbl.getModel();
         LinkedList<Contacto> contactos = this.app.getContactos();
         for (Contacto contacto : contactos) {
-            modelo.addRow( contacto.getDatos() );
+            modelo.addRow( contacto.getDatos(this.rb) );
         }        
     }
 
@@ -53,8 +70,8 @@ public class AgendaContactos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        tituloLbl = new javax.swing.JLabel();
+        buscarLbl = new javax.swing.JLabel();
         buscarBtn = new javax.swing.JButton();
         buscarTxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -64,11 +81,11 @@ public class AgendaContactos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 32)); // NOI18N
-        jLabel1.setText("Agenda de Contactos");
+        tituloLbl.setFont(new java.awt.Font("Tahoma", 1, 32)); // NOI18N
+        tituloLbl.setText("Agenda de Contactos");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setText("Buscar:");
+        buscarLbl.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        buscarLbl.setText("Buscar:");
 
         buscarBtn.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         buscarBtn.setText("Buscar");
@@ -129,9 +146,9 @@ public class AgendaContactos extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(0, 172, Short.MAX_VALUE)
-                                        .addComponent(jLabel1))
+                                        .addComponent(tituloLbl))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
+                                        .addComponent(buscarLbl)
                                         .addGap(18, 18, 18)
                                         .addComponent(buscarTxt)))
                                 .addGap(18, 18, 18)
@@ -147,10 +164,10 @@ public class AgendaContactos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel1)
+                .addComponent(tituloLbl)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(buscarLbl)
                     .addComponent(buscarBtn)
                     .addComponent(buscarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
@@ -166,7 +183,7 @@ public class AgendaContactos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBtnActionPerformed
-        VContacto contacto = new VContacto((DefaultTableModel) this.contactosTbl.getModel(), this.app);
+        VContacto contacto = new VContacto((DefaultTableModel) this.contactosTbl.getModel(), this.app, this.rb);
         contacto.setVisible( true );
     }//GEN-LAST:event_agregarBtnActionPerformed
 
@@ -184,7 +201,7 @@ public class AgendaContactos extends javax.swing.JFrame {
         for (int i=0; i < this.app.getContactos().size(); i++) {
             Contacto contacto = this.app.getContactos().get(i);
             if (contacto.getNombre().contains(texto) || contacto.getApellido().contains(texto) || contacto.getTelefono().contains(texto)) {
-                modelo.addRow( contacto.getDatos() );
+                modelo.addRow( contacto.getDatos(this.rb) );
             }
         }
     }//GEN-LAST:event_buscarBtnActionPerformed
@@ -211,7 +228,7 @@ public class AgendaContactos extends javax.swing.JFrame {
                 
                 if (boton.getName().equals("M")) {
                     
-                    VContacto vcontacto = new VContacto((DefaultTableModel) this.contactosTbl.getModel(), this.app, contacto, this.contactosTbl.getSelectedRow());
+                    VContacto vcontacto = new VContacto((DefaultTableModel) this.contactosTbl.getModel(), this.app, contacto, this.contactosTbl.getSelectedRow(), this.rb);
                     vcontacto.setVisible( true );
                 }
                 if (boton.getName().equals("E")) {
@@ -274,11 +291,11 @@ public class AgendaContactos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarBtn;
     private javax.swing.JButton buscarBtn;
+    private javax.swing.JLabel buscarLbl;
     private javax.swing.JTextField buscarTxt;
     private javax.swing.JButton cerrarBtn;
     private javax.swing.JTable contactosTbl;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel tituloLbl;
     // End of variables declaration//GEN-END:variables
 }

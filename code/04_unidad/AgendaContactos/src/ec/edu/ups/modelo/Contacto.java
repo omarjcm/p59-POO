@@ -4,7 +4,9 @@
  */
 package ec.edu.ups.modelo;
 
+import ec.edu.ups.controlador.Constantes;
 import java.io.Serializable;
+import java.util.ResourceBundle;
 import java.util.UUID;
 import javax.swing.JButton;
 
@@ -61,10 +63,10 @@ public class Contacto implements Serializable {
         this.telefono = telefono;
     }
 
-    public Object[] getDatos() {
-        JButton btnModificar = new JButton("Modificar");
+    public Object[] getDatos(ResourceBundle recurso) {
+        JButton btnModificar = new JButton( recurso.getString( Constantes.VENTANA_MODIFICAR ) );
         btnModificar.setName("M");
-        JButton btnEliminar = new JButton("Eliminar");
+        JButton btnEliminar = new JButton( recurso.getString( Constantes.VENTANA_ELIMINAR ) );
         btnEliminar.setName("E");
 
         Object[] valores = { this.nombre, this.apellido, this.telefono, btnModificar, btnEliminar};

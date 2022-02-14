@@ -4,9 +4,11 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.Constantes;
 import ec.edu.ups.controlador.GestionarContacto;
 import ec.edu.ups.modelo.Contacto;
 import java.util.LinkedList;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,8 +24,12 @@ public class VContacto extends javax.swing.JFrame {
     private Contacto contacto;
     private int filaSeleccionada;
     
-    public VContacto(DefaultTableModel modelo, GestionarContacto app, Contacto contacto, int filaSeleccionada) {
+    private ResourceBundle recurso;
+    
+    public VContacto(DefaultTableModel modelo, GestionarContacto app, Contacto contacto, int filaSeleccionada, ResourceBundle recurso) {
         initComponents();
+        this.recurso = recurso;
+        this.cargarIdioma();
         
         this.setLocationRelativeTo( null );
         this.setDefaultCloseOperation( HIDE_ON_CLOSE );
@@ -40,8 +46,10 @@ public class VContacto extends javax.swing.JFrame {
         this.contacto = this.app.buscarIdPorNombreApellidoTelefono( this.contacto );
     }
     
-    public VContacto(DefaultTableModel modelo, GestionarContacto app) {
+    public VContacto(DefaultTableModel modelo, GestionarContacto app, ResourceBundle recurso) {
         initComponents();
+        this.recurso = recurso;
+        this.cargarIdioma();
         
         this.setLocationRelativeTo( null );
         this.setDefaultCloseOperation( HIDE_ON_CLOSE );
@@ -51,12 +59,21 @@ public class VContacto extends javax.swing.JFrame {
         this.contacto = null;
     }
     
+    public void cargarIdioma() {
+        this.tituloLbl.setText( this.recurso.getString( Constantes.CONTACTO_TITULO ) );
+        this.nombreLbl.setText( this.recurso.getString( Constantes.CONTACTO_NOMBRE ) + ":" );
+        this.apellidoLbl.setText( this.recurso.getString( Constantes.CONTACTO_APELLIDO ) + ":" );
+        this.telefonoLbl.setText( this.recurso.getString( Constantes.CONTACTO_TELEFONO ) + ":" );
+        this.cancelarBtn.setText( this.recurso.getString( Constantes.VENTANA_CANCELAR ) );
+        this.guardarBtn.setText( this.recurso.getString( Constantes.VENTANA_GUARDAR ) );
+    }
+    
     public void cargarDatos() {
         this.modelo.setRowCount(0);
         
         LinkedList<Contacto> contactos = this.app.getContactos();
         for (Contacto contacto : contactos) {
-            this.modelo.addRow( contacto.getDatos() );
+            this.modelo.addRow( contacto.getDatos(this.recurso) );
         }        
     }
     

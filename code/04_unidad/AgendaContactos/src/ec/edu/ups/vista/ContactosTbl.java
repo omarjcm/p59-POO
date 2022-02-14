@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.Constantes;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -17,17 +19,21 @@ public class ContactosTbl {
     public ContactosTbl(){
     }
     
-    public void verTabla(JTable tabla) {
+    public void verTabla(JTable tabla, ResourceBundle recurso) {
         tabla.setDefaultRenderer(Object.class, new Render());
         
-        JButton modificarBtn = new JButton("Modificar");
+        JButton modificarBtn = new JButton( recurso.getString( Constantes.VENTANA_MODIFICAR ) );
         modificarBtn.setName("M");
-        JButton eliminarBtn = new JButton("Eliminar");
+        JButton eliminarBtn = new JButton( recurso.getString( Constantes.VENTANA_ELIMINAR ) );
         eliminarBtn.setName("E");
         
         DefaultTableModel modelo = new DefaultTableModel(
                 new Object[][]{},
-                new Object[]{"Nombre", "Apellido", "Teléfono", "Modificar", "Eliminar"}
+                new Object[]{ recurso.getString( Constantes.CONTACTO_NOMBRE ) , 
+                              recurso.getString( Constantes.CONTACTO_APELLIDO ), 
+                              recurso.getString( Constantes.CONTACTO_TELEFONO ), 
+                              recurso.getString( Constantes.VENTANA_MODIFICAR ), 
+                              recurso.getString( Constantes.VENTANA_ELIMINAR ) }
         );
         
         tabla.setModel(modelo);
