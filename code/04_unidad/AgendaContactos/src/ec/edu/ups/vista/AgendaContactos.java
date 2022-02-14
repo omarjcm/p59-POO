@@ -31,6 +31,8 @@ public class AgendaContactos extends javax.swing.JFrame {
     public AgendaContactos() {
         initComponents();
         
+        this.setDefaultCloseOperation( EXIT_ON_CLOSE );
+        
         this.rb = ResourceBundle.getBundle( Constantes.RECURSO, Locale.ENGLISH );
         this.cargarIdioma();
         
@@ -82,6 +84,7 @@ public class AgendaContactos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tituloLbl.setFont(new java.awt.Font("Tahoma", 1, 32)); // NOI18N
+        tituloLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tituloLbl.setText("Agenda de Contactos");
 
         buscarLbl.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -139,25 +142,21 @@ public class AgendaContactos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 172, Short.MAX_VALUE)
-                                        .addComponent(tituloLbl))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(buscarLbl)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(buscarTxt)))
-                                .addGap(18, 18, 18)
-                                .addComponent(buscarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(agregarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cerrarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cerrarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tituloLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(buscarLbl)
+                                .addGap(18, 18, 18)
+                                .addComponent(buscarTxt)
+                                .addGap(18, 18, 18)
+                                .addComponent(buscarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
